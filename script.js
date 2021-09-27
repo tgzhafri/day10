@@ -1,6 +1,16 @@
 window.addEventListener("mousemove", onMouseMove);
+window.addEventListener('scroll', onScroll);
 
+window.onload = function () {
+    window.scrollTo(0,0);
+}
+window.scrollTo(0,0);
+
+var progressBar = document.getElementById("progress-bar");
+var sectionOne = document.getElementById("sectionOne");
+var sectionTwo = document.getElementById("sectionTwo");
 var container = document.getElementById("container");
+
 var layerOne = document.getElementById("layer1");
 var layerTwo = document.getElementById("layer2");
 var layerThree = document.getElementById("layer3");
@@ -29,6 +39,28 @@ var levelThreePos = { x: 0, y: 0, w: 1200, h: 600 };
 var levelFourPos = { x: 0, y: 0, w: 1200, h: 600 };
 var levelFivePos = { x: 0, y: 0, w: 1200, h: 600 };
 
+function onScroll (evt) {
+    var currentWidth = (window.scrollY / (container.scrollHeight - window.innerHeight)) * 100;
+    progressBar.style.width = currentWidth + '%';
+
+    if (window.scrollY >= sectionTwo.offsetTop) {
+        progressBar.style.backgroundColor = "skyblue";
+    } else {
+        progressBar.style.backgroundColor = "maroon";
+    }
+
+    // for(var i = 0; i < itemList.length; i++) {
+    //     if (window.scrollY >= sectionList[i].offsetTop) {
+    //         sectionsection[i].classList.remove('fadeOut');
+    //         sectionList[i].classList.add('fadeIn');
+    //     }
+
+    //     if (window.scrollY <= itemList[i].offsetTop) {
+    //         sectionList[i].classList.remove('fadeIn');
+    //         sectionList[i].classList.add('fadeOut');
+    //     }
+    // }
+}
 
 function onMouseMove(evt) {
   var mouse = {
